@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(nvim:*)",
+      "Bash(find:*)",
+      "Bash(while read f)",
+      "Bash(do echo \"File: $f\")",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

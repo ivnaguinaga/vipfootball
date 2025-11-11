@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="64" viewBox="0 0 220 64" role="img" aria-label="VipFootball logo">
+  <defs>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 26px; fill: #111213; letter-spacing: -0.5px; }
+      .vip { font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 26px; fill: url(#greenGradient); letter-spacing: -0.5px; }
+      .ball-outline { fill: none; stroke: #10b981; stroke-width: 3px; }
+      .ball-fill { fill: #10b981; opacity: 0.2; }
+      .star { fill: #10b981; }
+    </style>
+  </defs>
+
+  <!-- Football with star -->
+  <g transform="translate(24,32)">
+    <circle cx="0" cy="0" r="16" class="ball-fill" />
+    <circle cx="0" cy="0" r="16" class="ball-outline" />
+    <path d="M0,-8 L2,-2 L8,-2 L3,2 L5,8 L0,4 L-5,8 L-3,2 L-8,-2 L-2,-2 Z" class="star" />
+  </g>
+
+  <!-- Text -->
+  <text x="52" y="40" class="vip">Vip</text>
+  <text x="90" y="40" class="title">Football</text>
+</svg>
