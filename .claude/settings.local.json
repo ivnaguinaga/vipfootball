@@ -7,7 +7,9 @@
       "Bash(while read f)",
       "Bash(do echo \"File: $f\")",
       "Bash(done)",
-      "Bash(railway:*)"
+      "Bash(railway:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
