@@ -6,12 +6,3 @@ version = "1.21.0"
 
 [build.nixpacksPlan.phases.setup]
 nixPkgs = ["php83"]
-```
-
-### Option 3: Set PHP Version via Environment Variable
-
-In Railway:
-1. Go to your service → **Variables**
-2. Add:
-```
-   NIXPACKS_PHP_VERSION=8.3
