@@ -9,7 +9,8 @@
       "Bash(done)",
       "Bash(railway:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(php artisan:*)"
     ],
     "deny": [],
     "ask": []
