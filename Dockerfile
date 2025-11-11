@@ -42,6 +42,9 @@ COPY . .
 # Build assets
 RUN npm run build
 
+# Verify build artifacts
+RUN ls -la public/build/ || echo "Build directory missing"
+
 # Create storage directories
 RUN mkdir -p storage/framework/cache/data \
     storage/framework/sessions \
