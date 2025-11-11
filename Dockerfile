@@ -47,10 +47,14 @@ RUN mkdir -p storage/framework/cache/data \
     storage/framework/sessions \
     storage/framework/views \
     storage/logs \
-    bootstrap/cache
+    bootstrap/cache \
+    database
+
+# Create SQLite database
+RUN touch database/database.sqlite
 
 # Set permissions
-RUN chmod -R 775 storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache database
 
 # Expose port
 EXPOSE 8000
