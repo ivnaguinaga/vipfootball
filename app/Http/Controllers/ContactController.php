@@ -23,8 +23,9 @@ class ContactController extends Controller
         ]);
 
         try {
+            // Queue email to avoid blocking the request
             Mail::to(config('mail.from.address'))
-                ->send(new ContactMail($validated));
+                ->queue(new ContactMail($validated));
 
             return back()->with('success', 'Message sent successfully! We\'ll get back to you soon.');
         } catch (\Exception $e) {
