@@ -11,7 +11,8 @@
         </script>
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="theme-color" content="#1f2937">
 
         <title inertia>{{ config('app.name', 'VipFootball') }}</title>
 
@@ -26,10 +27,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.tsx'])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen">
+    <body class="font-sans antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen" style="padding-bottom: env(safe-area-inset-bottom);">
 
-        <header class="fixed top-0 left-0 right-0 z-50 bg-gray-800/80 backdrop-blur-md border-b border-gray-700 shadow-xl">
-            <div class="max-w-full px-4 md:px-6">
+        <header class="fixed top-0 left-0 right-0 z-50 bg-gray-800/80 backdrop-blur-md border-b border-gray-700 shadow-xl" style="padding-top: env(safe-area-inset-top);">
+            <div class="max-w-full px-4 md:px-6" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
                 <div class="flex items-center justify-between h-16 md:h-20">
                     <!-- Logo - Left -->
                     <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
