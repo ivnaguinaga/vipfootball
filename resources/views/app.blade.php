@@ -30,11 +30,11 @@
     <body class="font-sans antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen" style="padding-bottom: env(safe-area-inset-bottom);">
 
         <header class="fixed top-0 left-0 right-0 z-50 bg-gray-800/80 backdrop-blur-md border-b border-gray-700 shadow-xl" style="padding-top: env(safe-area-inset-top);">
-            <div class="max-w-full px-4 md:px-6" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
-                <div class="flex items-center justify-between h-16 md:h-20">
+            <div class="max-w-full px-4 lg:px-6" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
+                <div class="flex items-center justify-between h-16 lg:h-20">
                     <!-- Logo - Left -->
                     <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="220" height="64" viewBox="0 0 220 64" role="img" aria-label="VipFootball logo" class="h-10 md:h-16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="220" height="64" viewBox="0 0 220 64" role="img" aria-label="VipFootball logo" class="h-10 lg:h-16">
                           <defs>
                             <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                               <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
@@ -63,7 +63,7 @@
                     </a>
 
                     <!-- Desktop Navigation - Center -->
-                    <nav class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-2">
+                    <nav class="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-2">
                         <a href="/" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-all font-medium">
                             Home
                         </a>
@@ -76,20 +76,20 @@
                     </nav>
 
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="md:hidden p-2 text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-all">
+                    <button id="mobile-menu-button" class="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
 
                     <!-- Desktop Contact Button - Right -->
-                    <a href="/contact" class="hidden md:block px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white rounded-lg transition-all font-semibold shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:scale-105 transform">
+                    <a href="/contact" class="hidden lg:block px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white rounded-lg transition-all font-semibold shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:scale-105 transform">
                         Contact Me
                     </a>
                 </div>
 
                 <!-- Mobile Menu -->
-                <div id="mobile-menu" class="hidden md:hidden pb-4 pt-2">
+                <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2">
                     <nav class="flex flex-col gap-2">
                         <a href="/" class="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-all font-medium">
                             Home
@@ -118,7 +118,7 @@
             });
         </script>
 
-        <div class="pt-16 md:pt-20">
+        <div class="pt-16 lg:pt-20">
             @inertia
         </div>
     </body>
