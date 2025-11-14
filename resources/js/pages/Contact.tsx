@@ -1,7 +1,23 @@
-import { Head } from '@inertiajs/react';
-import { Mail, MessageSquare, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Head, useForm, usePage } from '@inertiajs/react';
+import { Mail, MessageSquare, Send, Github, Linkedin, CheckCircle2, AlertCircle } from 'lucide-react';
+import { FormEventHandler } from 'react';
 
 export default function Contact() {
+    const page = usePage();
+    const flash = page.props.flash as { success?: string; error?: string } | undefined;
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: '',
+        email: '',
+        message: '',
+    });
+
+    const submit: FormEventHandler = (e) => {
+        e.preventDefault();
+        post('/contact', {
+            onSuccess: () => reset(),
+        });
+    };
+
     return (
         <>
             <Head title="Contact" />
@@ -18,6 +34,21 @@ export default function Contact() {
                         </p>
                     </div>
 
+                    {/* Success/Error Messages */}
+                    {flash?.success && (
+                        <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/50 rounded-lg flex items-center gap-3 text-emerald-400 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                            <p>{flash.success}</p>
+                        </div>
+                    )}
+
+                    {flash?.error && (
+                        <div className="mb-8 p-4 bg-red-500/10 border border-red-500/50 rounded-lg flex items-center gap-3 text-red-400 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                            <p>{flash.error}</p>
+                        </div>
+                    )}
+
                     <div className="grid md:grid-cols-2 gap-8">
                         {/* Contact Form */}
                         <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700 shadow-2xl">
@@ -26,7 +57,7 @@ export default function Contact() {
                                 <h2 className="text-2xl font-bold text-white">Send a Message</h2>
                             </div>
 
-                            <form className="space-y-5">
+                            <form onSubmit={submit} className="space-y-5">
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                                         Name
@@ -34,9 +65,19 @@ export default function Contact() {
                                     <input
                                         type="text"
                                         id="name"
-                                        className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                                        value={data.name}
+                                        onChange={(e) => setData('name', e.target.value)}
+                                        className={`w-full px-4 py-3 bg-gray-900/50 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
+                                            errors.name ? 'border-red-500' : 'border-gray-600'
+                                        }`}
                                         placeholder="Your name"
                                     />
+                                    {errors.name && (
+                                        <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                                            <AlertCircle className="w-4 h-4" />
+                                            {errors.name}
+                                        </p>
+                                    )}
                                 </div>
 
                                 <div>
@@ -46,9 +87,19 @@ export default function Contact() {
                                     <input
                                         type="email"
                                         id="email"
-                                        className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                                        value={data.email}
+                                        onChange={(e) => setData('email', e.target.value)}
+                                        className={`w-full px-4 py-3 bg-gray-900/50 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
+                                            errors.email ? 'border-red-500' : 'border-gray-600'
+                                        }`}
                                         placeholder="your@email.com"
                                     />
+                                    {errors.email && (
+                                        <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                                            <AlertCircle className="w-4 h-4" />
+                                            {errors.email}
+                                        </p>
+                                    )}
                                 </div>
 
                                 <div>
@@ -58,17 +109,28 @@ export default function Contact() {
                                     <textarea
                                         id="message"
                                         rows={5}
-                                        className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+                                        value={data.message}
+                                        onChange={(e) => setData('message', e.target.value)}
+                                        className={`w-full px-4 py-3 bg-gray-900/50 border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none ${
+                                            errors.message ? 'border-red-500' : 'border-gray-600'
+                                        }`}
                                         placeholder="Your message..."
                                     />
+                                    {errors.message && (
+                                        <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
+                                            <AlertCircle className="w-4 h-4" />
+                                            {errors.message}
+                                        </p>
+                                    )}
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-semibold rounded-lg shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 transition-all flex items-center justify-center gap-2 hover:scale-105 transform"
+                                    disabled={processing}
+                                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-semibold rounded-lg shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 transition-all flex items-center justify-center gap-2 hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                                 >
                                     <Send className="w-5 h-5" />
-                                    Send Message
+                                    {processing ? 'Sending...' : 'Send Message'}
                                 </button>
                             </form>
                         </div>
