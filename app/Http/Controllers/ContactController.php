@@ -23,7 +23,7 @@ class ContactController extends Controller
         ]);
 
         try {
-            Mail::to(config('mail.from.address'))
+            Mail::to(env('CONTACT_EMAIL', 'ivan7agui@gmail.com'))
                 ->send(new ContactMail($validated));
 
             return back()->with('success', 'Message sent successfully! We\'ll get back to you soon.');
